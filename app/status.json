@@ -1,0 +1,46 @@
+{
+  "generated_at": "2025-09-29T21:44:15.421Z",
+  "repo": "Hydr44/rescuemanager-app",
+  "commit": "27fa4c53430abc65151ff662d6905236ac08a0d0",
+  "node": "v20.19.5",
+  "package": {
+    "name": "rescuemanager",
+    "version": "0.1.0",
+    "deps": [
+      "@heroicons/react",
+      "@supabase/auth-ui-react",
+      "@supabase/auth-ui-shared",
+      "@supabase/ssr",
+      "@supabase/supabase-js",
+      "better-sqlite3",
+      "clsx",
+      "leaflet",
+      "qrcode",
+      "react",
+      "react-dom",
+      "react-icons",
+      "react-router-dom",
+      "zod"
+    ],
+    "devDeps": [
+      "@tailwindcss/forms",
+      "@tailwindcss/postcss",
+      "@types/node",
+      "@types/react",
+      "@types/react-dom",
+      "@vitejs/plugin-react",
+      "autoprefixer",
+      "concurrently",
+      "cross-env",
+      "electron",
+      "electron-builder",
+      "electron-rebuild",
+      "postcss",
+      "tailwindcss",
+      "typescript",
+      "vite",
+      "wait-on"
+    ]
+  },
+  "lock_hash": "fad06b028ed2b8de"
+}
