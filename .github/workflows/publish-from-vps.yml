@@ -1,0 +1,41 @@
+name: Publish from VPS
+on:
+  schedule:
+    - cron: "*/10 * * * *"   # ogni 10 minuti
+  workflow_dispatch: {}
+
+jobs:
+  export:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Load local env
+        run: |
+          set -a
+          [ -f /etc/ai-telemetry.env ] && . /etc/ai-telemetry.env
+          set +a
+
+      - name: Generate Supabase status
+        env:
+          PGURL: ${{ env.PGURL }}
+        run: |
+          node /opt/ai-telemetry/exporters/generate_supabase_status.js
+          node /opt/ai-telemetry/tools/sanitize.js /opt/ai-telemetry/out/supabase_status.json
+          mkdir -p supabase
+          cp /opt/ai-telemetry/out/supabase_status.json supabase/status.json
+
+      - name: Generate VPS status
+        run: |
+          bash /opt/ai-telemetry/exporters/generate_vps_status.sh
+          node /opt/ai-telemetry/tools/sanitize.js /opt/ai-telemetry/out/vps_status.json
+          mkdir -p vps
+          cp /opt/ai-telemetry/out/vps_status.json vps/status.json
+
+      - name: Commit & push
+        run: |
+          git config user.email "bot@yourdomain"
+          git config user.name "telemetry-bot"
+          git add supabase/status.json vps/status.json
+          git commit -m "update(vps): $(date -u +%FT%TZ)" || echo "no changes"
+          git push
