@@ -83,27 +83,14 @@ jobs:
           mkdir -p vps
           cp /opt/ai-telemetry/out/vps_status.json vps/status.json
 
-      - name: Generate Healthcheck
-        shell: bash
-        run: |
-          bash /opt/ai-telemetry/exporters/healthcheck.sh
-          node /opt/ai-telemetry/tools/sanitize.js /opt/ai-telemetry/out/health.json
-          mkdir -p health
-          cp /opt/ai-telemetry/out/health.json health/status.json
-
-      - name: Export App Logs
-        shell: bash
-        run: |
-          bash /opt/ai-telemetry/exporters/export_logs.sh
-          node /opt/ai-telemetry/tools/sanitize.js /opt/ai-telemetry/out/app_log.json
-          mkdir -p logs
-          cp /opt/ai-telemetry/out/app_log.json logs/status.json
-
       - name: Commit & push
         shell: bash
         run: |
           git config user.email "runner@ai-telemetry.local"
           git config user.name  "AI Telemetry Bot"
-          git add supabase/status.json vps/status.json health/status.json logs/status.json
+          git add supabase/status.json vps/status.json
           git commit -m "update(vps): $(date -u +%FT%TZ)" || echo "no changes to commit"
           git push
+
+
+aggiorna da wuesto
