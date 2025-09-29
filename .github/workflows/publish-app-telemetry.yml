@@ -1,4 +1,5 @@
 name: Publish App Telemetry
+
 on:
   push:
     branches: [ main ]
@@ -6,23 +7,38 @@ on:
     - cron: "*/30 * * * *"
   workflow_dispatch: {}
 
+permissions:
+  contents: read
+
 jobs:
   publish:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
+    steps:
+      # Clona il REPO DELLA TUA APP (dove c'è package.json)
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      # (opzionale) forza una versione Node recente
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # Genera app_status.json dalla tua app
       - name: Build app status
         run: |
           node -e "const fs=require('fs'); const crypto=require('crypto'); const pkg=require('./package.json'); const lock=['pnpm-lock.yaml','yarn.lock','package-lock.json'].find(f=>fs.existsSync(f)); const lockHash=lock?crypto.createHash('sha256').update(fs.readFileSync(lock)).digest('hex').slice(0,16):null; const status={ generated_at:new Date().toISOString(), repo:process.env.GITHUB_REPOSITORY, commit:process.env.GITHUB_SHA, node:process.version, package:{ name:pkg.name, version:pkg.version, deps:Object.keys(pkg.dependencies||{}).slice(0,200), devDeps:Object.keys(pkg.devDependencies||{}).slice(0,200)}, lock_hash:lockHash }; fs.writeFileSync('app_status.json', JSON.stringify(status,null,2));"
 
+      # Safety: blocca se accidentalmente finisce una parola tipo "secret"
       - name: Sanitize
         run: |
           node -e "const s=require('fs').readFileSync('app_status.json','utf8'); if (/(secret|token|apikey|authorization|password|service_role|cookie)/i.test(s)) { console.error('SanitizationError'); process.exit(1); }"
 
+      # Copia app_status.json nel repo Hydr44/ai-telemetry/app/status.json
       - name: Push to ai-telemetry
         env:
-          GH_TOKEN: ${{ secrets.TELEMETRY_PAT }}
+          GH_TOKEN: ${{ secrets.TELEMETRY_PAT }}   # PAT con write su Hydr44/ai-telemetry
         run: |
           git clone https://github.com/Hydr44/ai-telemetry tmp-telemetry
           mkdir -p tmp-telemetry/app
