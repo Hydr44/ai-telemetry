@@ -1,7 +1,6 @@
 {
-  "generated_at": "2025-09-29T21:46:53.246Z",
-  "repo": "Hydr44/rescuemanager-app",
-  "commit": "27fa4c53430abc65151ff662d6905236ac08a0d0",
+  "generated_at": "2025-09-29T22:12:23.175Z",
+  "source_repo": "Hydr44/ai-telemetry",
   "node": "v20.19.5",
   "package": {
     "name": "rescuemanager",
