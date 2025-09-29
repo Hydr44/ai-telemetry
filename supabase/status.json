@@ -1,0 +1,745 @@
+{
+  "generated_at": "2025-09-29T21:19:40.236Z",
+  "db": {
+    "tables": [
+      {
+        "name": "categories",
+        "columns": 5
+      },
+      {
+        "name": "clients",
+        "columns": 8
+      },
+      {
+        "name": "drivers",
+        "columns": 7
+      },
+      {
+        "name": "memberships",
+        "columns": 4
+      },
+      {
+        "name": "org_members",
+        "columns": 4
+      },
+      {
+        "name": "organizations",
+        "columns": 4
+      },
+      {
+        "name": "orgs",
+        "columns": 3
+      },
+      {
+        "name": "profiles",
+        "columns": 6
+      },
+      {
+        "name": "subscriptions",
+        "columns": 9
+      },
+      {
+        "name": "transports",
+        "columns": 27
+      },
+      {
+        "name": "vehicles",
+        "columns": 7
+      }
+    ],
+    "columns": [
+      {
+        "table": "categories",
+        "column": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "categories",
+        "column": "user_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "categories",
+        "column": "name",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "categories",
+        "column": "color",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "categories",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
+        "table": "clients",
+        "column": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "clients",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "clients",
+        "column": "name",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "clients",
+        "column": "phone",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "clients",
+        "column": "email",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "clients",
+        "column": "note",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "clients",
+        "column": "created_by",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "clients",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "drivers",
+        "column": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "drivers",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "drivers",
+        "column": "name",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "drivers",
+        "column": "phone",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "drivers",
+        "column": "license_no",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "drivers",
+        "column": "created_by",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "drivers",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "memberships",
+        "column": "user_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "memberships",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "memberships",
+        "column": "role",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "memberships",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "org_members",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "org_members",
+        "column": "user_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "org_members",
+        "column": "role",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "org_members",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
+        "table": "organizations",
+        "column": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "organizations",
+        "column": "name",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "organizations",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "organizations",
+        "column": "created_by",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "orgs",
+        "column": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "orgs",
+        "column": "name",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "orgs",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
+        "table": "profiles",
+        "column": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "profiles",
+        "column": "email",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "profiles",
+        "column": "stripe_customer_id",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "profiles",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "profiles",
+        "column": "current_org",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "profiles",
+        "column": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "subscriptions",
+        "column": "id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "subscriptions",
+        "column": "user_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "subscriptions",
+        "column": "status",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "subscriptions",
+        "column": "price_id",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "subscriptions",
+        "column": "current_period_end",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "subscriptions",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "subscriptions",
+        "column": "stripe_customer_id",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "subscriptions",
+        "column": "stripe_subscription_id",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "subscriptions",
+        "column": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
+        "table": "transports",
+        "column": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "transports",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "transports",
+        "column": "client_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "vehicle_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "driver_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "status",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "pickup_address",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "dropoff_address",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "eta_minutes",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "price_cents",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "notes",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "created_by",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "autista",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "cliente",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "via",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "citta",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "cap",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "provincia",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "indirizzo",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "stato",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "orario",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "mezzo",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "note",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "lat",
+        "type": "double precision",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "lng",
+        "type": "double precision",
+        "nullable": true
+      },
+      {
+        "table": "transports",
+        "column": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "vehicles",
+        "column": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "vehicles",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "vehicles",
+        "column": "plate",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "vehicles",
+        "column": "model",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "vehicles",
+        "column": "notes",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "vehicles",
+        "column": "created_by",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "vehicles",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      }
+    ],
+    "policies": [
+      {
+        "table": "categories",
+        "policy": "categories_delete_own",
+        "roles": "{authenticated}",
+        "cmd": "DELETE"
+      },
+      {
+        "table": "categories",
+        "policy": "categories_insert_own",
+        "roles": "{authenticated}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "categories",
+        "policy": "categories_select_own",
+        "roles": "{authenticated}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "categories",
+        "policy": "categories_update_own",
+        "roles": "{authenticated}",
+        "cmd": "UPDATE"
+      },
+      {
+        "table": "categories",
+        "policy": "delete own categories",
+        "roles": "{public}",
+        "cmd": "DELETE"
+      },
+      {
+        "table": "categories",
+        "policy": "insert own categories",
+        "roles": "{public}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "categories",
+        "policy": "select own categories",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "categories",
+        "policy": "update own categories",
+        "roles": "{public}",
+        "cmd": "UPDATE"
+      },
+      {
+        "table": "clients",
+        "policy": "clients: by org",
+        "roles": "{authenticated}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "drivers",
+        "policy": "drivers: by org",
+        "roles": "{authenticated}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "memberships",
+        "policy": "memberships: mine",
+        "roles": "{authenticated}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "org_members",
+        "policy": "org_members_insert_self",
+        "roles": "{public}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "org_members",
+        "policy": "org_members_select_mine",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "organizations",
+        "policy": "organizations_insert_authenticated",
+        "roles": "{public}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "organizations",
+        "policy": "organizations_select_where_member",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "orgs",
+        "policy": "insert orgs",
+        "roles": "{authenticated}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "orgs",
+        "policy": "orgs_select",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "orgs",
+        "policy": "orgs_select_where_member",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "orgs",
+        "policy": "select orgs for members",
+        "roles": "{authenticated}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "profiles",
+        "policy": "profiles_select_self",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "profiles",
+        "policy": "profiles_update_self",
+        "roles": "{public}",
+        "cmd": "UPDATE"
+      },
+      {
+        "table": "subscriptions",
+        "policy": "read own subs",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "subscriptions",
+        "policy": "read own subscription",
+        "roles": "{authenticated}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "subscriptions",
+        "policy": "read_own_subscription",
+        "roles": "{authenticated}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "subscriptions",
+        "policy": "subscriptions: me",
+        "roles": "{authenticated}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "subscriptions",
+        "policy": "update_own_subscription",
+        "roles": "{authenticated}",
+        "cmd": "UPDATE"
+      },
+      {
+        "table": "transports",
+        "policy": "transports_delete",
+        "roles": "{public}",
+        "cmd": "DELETE"
+      },
+      {
+        "table": "transports",
+        "policy": "transports_insert",
+        "roles": "{public}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "transports",
+        "policy": "transports_select",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "transports",
+        "policy": "transports_update",
+        "roles": "{public}",
+        "cmd": "UPDATE"
+      },
+      {
+        "table": "vehicles",
+        "policy": "vehicles: by org",
+        "roles": "{authenticated}",
+        "cmd": "SELECT"
+      }
+    ]
+  }
+}
