@@ -15,7 +15,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Carica le variabili locali della VPS (PGURL) e rendile disponibili ai passi successivi
+      # Assicura che siano presenti psql e jq (il runner gira come root, niente sudo)
+      - name: Ensure system dependencies
+        shell: bash
+        run: |
+          set -e
+          if ! command -v psql >/dev/null 2>&1; then
+            apt-get update
+            DEBIAN_FRONTEND=noninteractive apt-get install -y postgresql-client
+          fi
+          if ! command -v jq >/dev/null 2>&1; then
+            apt-get update
+            DEBIAN_FRONTEND=noninteractive apt-get install -y jq
+          fi
+
+      # Carica PGURL da /etc/ai-telemetry.env e la espone agli step successivi
       - name: Load local env
         shell: bash
         run: |
@@ -23,18 +37,13 @@ jobs:
             echo "❌ /etc/ai-telemetry.env non trovato" >&2
             exit 1
           fi
-
-          # Sorgo il file e promuovo le variabili nell'ambiente di GitHub Actions
           set -a
           . /etc/ai-telemetry.env
           set +a
-
           if [ -z "${PGURL:-}" ]; then
             echo "❌ PGURL mancante nel file /etc/ai-telemetry.env" >&2
             exit 1
           fi
-
-          # Nasconde PGURL dai log e la esporta per gli step successivi
           echo "::add-mask::${PGURL}"
           echo "PGURL=${PGURL}" >> "$GITHUB_ENV"
 
