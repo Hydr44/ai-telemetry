@@ -1,0 +1,35 @@
+name: Publish App Telemetry
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch: {}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build app status
+        run: |
+          node -e "const fs=require('fs'); const crypto=require('crypto'); const pkg=require('./package.json'); const lock=['pnpm-lock.yaml','yarn.lock','package-lock.json'].find(f=>fs.existsSync(f)); const lockHash=lock?crypto.createHash('sha256').update(fs.readFileSync(lock)).digest('hex').slice(0,16):null; const status={ generated_at:new Date().toISOString(), repo:process.env.GITHUB_REPOSITORY, commit:process.env.GITHUB_SHA, node:process.version, package:{ name:pkg.name, version:pkg.version, deps:Object.keys(pkg.dependencies||{}).slice(0,200), devDeps:Object.keys(pkg.devDependencies||{}).slice(0,200)}, lock_hash:lockHash }; fs.writeFileSync('app_status.json', JSON.stringify(status,null,2));"
+
+      - name: Sanitize
+        run: |
+          node -e "const s=require('fs').readFileSync('app_status.json','utf8'); if (/(secret|token|apikey|authorization|password|service_role|cookie)/i.test(s)) { console.error('SanitizationError'); process.exit(1); }"
+
+      - name: Push to ai-telemetry
+        env:
+          GH_TOKEN: ${{ secrets.TELEMETRY_PAT }}
+        run: |
+          git clone https://github.com/Hydr44/ai-telemetry tmp-telemetry
+          mkdir -p tmp-telemetry/app
+          cp app_status.json tmp-telemetry/app/status.json
+          cd tmp-telemetry
+          git config user.email "runner@ai-telemetry.local"
+          git config user.name  "AI Telemetry Bot"
+          git add app/status.json
+          git commit -m "update(app): ${GITHUB_REPOSITORY}@${GITHUB_SHA}" || echo "no changes"
+          git push https://x-access-token:${GH_TOKEN}@github.com/Hydr44/ai-telemetry HEAD:main
