@@ -1,22 +1,45 @@
 name: Publish from VPS
+
 on:
   schedule:
     - cron: "*/10 * * * *"   # ogni 10 minuti
   workflow_dispatch: {}
 
+permissions:
+  contents: write
+
 jobs:
   export:
     runs-on: self-hosted
+
     steps:
       - uses: actions/checkout@v4
 
+      # Carica le variabili locali della VPS (PGURL) e rendile disponibili ai passi successivi
       - name: Load local env
+        shell: bash
         run: |
+          if [ ! -f /etc/ai-telemetry.env ]; then
+            echo "❌ /etc/ai-telemetry.env non trovato" >&2
+            exit 1
+          fi
+
+          # Sorgo il file e promuovo le variabili nell'ambiente di GitHub Actions
           set -a
-          [ -f /etc/ai-telemetry.env ] && . /etc/ai-telemetry.env
+          . /etc/ai-telemetry.env
           set +a
 
+          if [ -z "${PGURL:-}" ]; then
+            echo "❌ PGURL mancante nel file /etc/ai-telemetry.env" >&2
+            exit 1
+          fi
+
+          # Nasconde PGURL dai log e la esporta per gli step successivi
+          echo "::add-mask::${PGURL}"
+          echo "PGURL=${PGURL}" >> "$GITHUB_ENV"
+
       - name: Generate Supabase status
+        shell: bash
         env:
           PGURL: ${{ env.PGURL }}
         run: |
@@ -26,6 +49,7 @@ jobs:
           cp /opt/ai-telemetry/out/supabase_status.json supabase/status.json
 
       - name: Generate VPS status
+        shell: bash
         run: |
           bash /opt/ai-telemetry/exporters/generate_vps_status.sh
           node /opt/ai-telemetry/tools/sanitize.js /opt/ai-telemetry/out/vps_status.json
@@ -33,9 +57,10 @@ jobs:
           cp /opt/ai-telemetry/out/vps_status.json vps/status.json
 
       - name: Commit & push
+        shell: bash
         run: |
-          git config user.email "bot@yourdomain"
-          git config user.name "telemetry-bot"
+          git config user.email "runner@ai-telemetry.local"
+          git config user.name  "AI Telemetry Bot"
           git add supabase/status.json vps/status.json
-          git commit -m "update(vps): $(date -u +%FT%TZ)" || echo "no changes"
+          git commit -m "update(vps): $(date -u +%FT%TZ)" || echo "no changes to commit"
           git push
