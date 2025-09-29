@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Assicura che siano presenti psql e jq
+      # Assicura che siano presenti psql e jq (il runner gira come root, niente sudo)
       - name: Ensure system dependencies
         shell: bash
         run: |
@@ -29,46 +29,28 @@ jobs:
             DEBIAN_FRONTEND=noninteractive apt-get install -y jq
           fi
 
-      # Carica /etc/ai-telemetry.env e promuove le variabili nell'ambiente del job
-      - name: Load local env (PGHOST/PGPORT/PGDATABASE/PGUSER/PGPASSWORD/PGSSLMODE)
+      # Carica PGURL da /etc/ai-telemetry.env e la espone agli step successivi
+      - name: Load local env
         shell: bash
         run: |
-          set -e
           if [ ! -f /etc/ai-telemetry.env ]; then
             echo "❌ /etc/ai-telemetry.env non trovato" >&2
             exit 1
           fi
-
-          # Sorgo il file e verifico le variabili richieste
           set -a
           . /etc/ai-telemetry.env
           set +a
-
-          for v in PGHOST PGPORT PGDATABASE PGUSER PGPASSWORD PGSSLMODE; do
-            if [ -z "$(eval echo \$$v)" ]; then
-              echo "❌ Variabile mancante: $v nel file /etc/ai-telemetry.env" >&2
-              exit 1
-            fi
-          done
-
-          # Nascondo la password nei log
-          echo "::add-mask::${PGPASSWORD}"
-
-          # Esporto per gli step successivi
-          {
-            echo "PGHOST=${PGHOST}"
-            echo "PGPORT=${PGPORT}"
-            echo "PGDATABASE=${PGDATABASE}"
-            echo "PGUSER=${PGUSER}"
-            echo "PGPASSWORD=${PGPASSWORD}"
-            echo "PGSSLMODE=${PGSSLMODE}"
-          } >> "$GITHUB_ENV"
-
-          # (facoltativo) log non sensibili
-          echo "ℹ️ Using host=$PGHOST db=$PGDATABASE user=$PGUSER"
+          if [ -z "${PGURL:-}" ]; then
+            echo "❌ PGURL mancante nel file /etc/ai-telemetry.env" >&2
+            exit 1
+          fi
+          echo "::add-mask::${PGURL}"
+          echo "PGURL=${PGURL}" >> "$GITHUB_ENV"
 
       - name: Generate Supabase status
         shell: bash
+        env:
+          PGURL: ${{ env.PGURL }}
         run: |
           node /opt/ai-telemetry/exporters/generate_supabase_status.js
           node /opt/ai-telemetry/tools/sanitize.js /opt/ai-telemetry/out/supabase_status.json
@@ -83,11 +65,27 @@ jobs:
           mkdir -p vps
           cp /opt/ai-telemetry/out/vps_status.json vps/status.json
 
+      - name: Generate Healthcheck
+        shell: bash
+        run: |
+          bash /opt/ai-telemetry/exporters/healthcheck.sh
+          node /opt/ai-telemetry/tools/sanitize.js /opt/ai-telemetry/out/health.json
+          mkdir -p health
+          cp /opt/ai-telemetry/out/health.json health/status.json
+
+      - name: Export App Logs
+        shell: bash
+        run: |
+          bash /opt/ai-telemetry/exporters/export_logs.sh
+          node /opt/ai-telemetry/tools/sanitize.js /opt/ai-telemetry/out/app_log.json
+          mkdir -p logs
+          cp /opt/ai-telemetry/out/app_log.json logs/status.json
+
       - name: Commit & push
         shell: bash
         run: |
           git config user.email "runner@ai-telemetry.local"
           git config user.name  "AI Telemetry Bot"
-          git add supabase/status.json vps/status.json
+          git add supabase/status.json vps/status.json health/status.json logs/status.json
           git commit -m "update(vps): $(date -u +%FT%TZ)" || echo "no changes to commit"
           git push
