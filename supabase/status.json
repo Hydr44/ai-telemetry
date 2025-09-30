@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-09-30T10:39:28.330Z",
+  "generated_at": "2025-09-30T10:50:18.318Z",
   "db": {
     "tables": [
       {
@@ -623,49 +623,49 @@
       {
         "table": "org_members",
         "policy": "org_members_delete_self",
-        "roles": "{public}",
+        "roles": "{authenticated}",
         "cmd": "DELETE"
       },
       {
         "table": "org_members",
         "policy": "org_members_insert_self",
-        "roles": "{public}",
+        "roles": "{authenticated}",
         "cmd": "INSERT"
       },
       {
         "table": "org_members",
-        "policy": "org_members_select_mine",
-        "roles": "{public}",
+        "policy": "org_members_select_scope",
+        "roles": "{authenticated}",
         "cmd": "SELECT"
       },
       {
         "table": "org_members",
         "policy": "org_members_update_self",
-        "roles": "{public}",
+        "roles": "{authenticated}",
         "cmd": "UPDATE"
       },
       {
         "table": "organizations",
-        "policy": "org_insert_auth",
+        "policy": "organizations_delete_owner",
+        "roles": "{authenticated}",
+        "cmd": "DELETE"
+      },
+      {
+        "table": "organizations",
+        "policy": "organizations_insert_auth",
         "roles": "{authenticated}",
         "cmd": "INSERT"
       },
       {
         "table": "organizations",
-        "policy": "organizations_delete_where_member",
-        "roles": "{public}",
-        "cmd": "DELETE"
-      },
-      {
-        "table": "organizations",
-        "policy": "organizations_select_where_member",
-        "roles": "{public}",
+        "policy": "organizations_select_visible",
+        "roles": "{authenticated}",
         "cmd": "SELECT"
       },
       {
         "table": "organizations",
-        "policy": "organizations_update_where_member",
-        "roles": "{public}",
+        "policy": "organizations_update_members",
+        "roles": "{authenticated}",
         "cmd": "UPDATE"
       },
       {
