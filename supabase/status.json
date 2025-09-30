@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-09-30T10:50:18.318Z",
+  "generated_at": "2025-09-30T11:15:20.256Z",
   "db": {
     "tables": [
       {
@@ -664,7 +664,7 @@
       },
       {
         "table": "organizations",
-        "policy": "organizations_update_members",
+        "policy": "organizations_update_owner",
         "roles": "{authenticated}",
         "cmd": "UPDATE"
       },
