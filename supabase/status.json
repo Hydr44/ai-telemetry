@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-01T21:58:54.546Z",
+  "generated_at": "2025-10-01T22:23:42.296Z",
   "db": {
     "tables": [
       {
@@ -47,8 +47,16 @@
         "columns": 27
       },
       {
+        "name": "users",
+        "columns": 9
+      },
+      {
         "name": "vehicles",
         "columns": 7
+      },
+      {
+        "name": "yard_items",
+        "columns": 17
       }
     ],
     "columns": [
@@ -641,6 +649,60 @@
         "nullable": true
       },
       {
+        "table": "users",
+        "column": "id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "table": "users",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "users",
+        "column": "nome",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "users",
+        "column": "email",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "users",
+        "column": "ruolo",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "users",
+        "column": "stato",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "users",
+        "column": "note",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "users",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
+        "table": "users",
+        "column": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
         "table": "vehicles",
         "column": "id",
         "type": "uuid",
@@ -681,6 +743,108 @@
         "column": "created_at",
         "type": "timestamp with time zone",
         "nullable": true
+      },
+      {
+        "table": "yard_items",
+        "column": "id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "table": "yard_items",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "yard_items",
+        "column": "categoria",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "yard_items",
+        "column": "targa",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "yard_items",
+        "column": "telaio",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "yard_items",
+        "column": "marca_modello",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "yard_items",
+        "column": "posizione",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "yard_items",
+        "column": "stato",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "yard_items",
+        "column": "ingressodata",
+        "type": "date",
+        "nullable": false
+      },
+      {
+        "table": "yard_items",
+        "column": "uscita_prevista",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "yard_items",
+        "column": "uscita_effettiva",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "yard_items",
+        "column": "condizioni_in",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "yard_items",
+        "column": "condizioni_out",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "yard_items",
+        "column": "foto",
+        "type": "jsonb",
+        "nullable": true
+      },
+      {
+        "table": "yard_items",
+        "column": "note",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "yard_items",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
+        "table": "yard_items",
+        "column": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false
       }
     ],
     "policies": [
@@ -949,9 +1113,45 @@
         "cmd": "UPDATE"
       },
       {
+        "table": "users",
+        "policy": "users_delete",
+        "roles": "{public}",
+        "cmd": "DELETE"
+      },
+      {
+        "table": "users",
+        "policy": "users_insert",
+        "roles": "{public}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "users",
+        "policy": "users_select",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "users",
+        "policy": "users_update",
+        "roles": "{public}",
+        "cmd": "UPDATE"
+      },
+      {
         "table": "vehicles",
         "policy": "vehicles: by org",
         "roles": "{authenticated}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "yard_items",
+        "policy": "yard_cud",
+        "roles": "{public}",
+        "cmd": "ALL"
+      },
+      {
+        "table": "yard_items",
+        "policy": "yard_select",
+        "roles": "{public}",
         "cmd": "SELECT"
       }
     ]
