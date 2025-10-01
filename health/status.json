@@ -1,13 +1,13 @@
 {
-  "generated_at": "2025-10-01T21:39:42Z",
-  "cpu_load": "0.03,",
+  "generated_at": "2025-10-01T21:49:18Z",
+  "cpu_load": "0.56,",
   "memory": {
-    "used_mb": 2013,
+    "used_mb": 2029,
     "total_mb": 3868
   },
   "disk": {
     "used": "16G",
     "total": "116G"
   },
-  "uptime": "up 2 weeks, 3 days, 12 hours, 1 minute"
+  "uptime": "up 2 weeks, 3 days, 12 hours, 10 minutes"
 }
