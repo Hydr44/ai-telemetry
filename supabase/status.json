@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-01T20:42:10.572Z",
+  "generated_at": "2025-10-01T20:55:03.994Z",
   "db": {
     "tables": [
       {
@@ -8,7 +8,7 @@
       },
       {
         "name": "clients",
-        "columns": 15
+        "columns": 14
       },
       {
         "name": "drivers",
@@ -92,12 +92,6 @@
         "table": "clients",
         "column": "org_id",
         "type": "uuid",
-        "nullable": false
-      },
-      {
-        "table": "clients",
-        "column": "name",
-        "type": "text",
         "nullable": false
       },
       {
@@ -734,6 +728,36 @@
       },
       {
         "table": "clients",
+        "policy": "clients_delete",
+        "roles": "{authenticated}",
+        "cmd": "DELETE"
+      },
+      {
+        "table": "clients",
+        "policy": "clients_dev_all",
+        "roles": "{authenticated}",
+        "cmd": "ALL"
+      },
+      {
+        "table": "clients",
+        "policy": "clients_insert",
+        "roles": "{authenticated}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "clients",
+        "policy": "clients_select",
+        "roles": "{authenticated}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "clients",
+        "policy": "clients_update",
+        "roles": "{authenticated}",
+        "cmd": "UPDATE"
+      },
+      {
+        "table": "clients",
         "policy": "org_scope",
         "roles": "{public}",
         "cmd": "ALL"
@@ -829,6 +853,18 @@
         "cmd": "ALL"
       },
       {
+        "table": "quotes",
+        "policy": "quotes_all",
+        "roles": "{authenticated}",
+        "cmd": "ALL"
+      },
+      {
+        "table": "quotes",
+        "policy": "quotes_dev_all",
+        "roles": "{authenticated}",
+        "cmd": "ALL"
+      },
+      {
         "table": "subscriptions",
         "policy": "read own subs",
         "roles": "{public}",
@@ -866,9 +902,21 @@
       },
       {
         "table": "transports",
+        "policy": "transports_all",
+        "roles": "{authenticated}",
+        "cmd": "ALL"
+      },
+      {
+        "table": "transports",
         "policy": "transports_delete",
         "roles": "{public}",
         "cmd": "DELETE"
+      },
+      {
+        "table": "transports",
+        "policy": "transports_dev_all",
+        "roles": "{authenticated}",
+        "cmd": "ALL"
       },
       {
         "table": "transports",
