@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-01T19:59:51.446Z",
+  "generated_at": "2025-10-01T20:28:27.406Z",
   "db": {
     "tables": [
       {
@@ -8,7 +8,7 @@
       },
       {
         "name": "clients",
-        "columns": 8
+        "columns": 15
       },
       {
         "name": "drivers",
@@ -124,6 +124,48 @@
         "table": "clients",
         "column": "created_at",
         "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "clients",
+        "column": "nome",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "clients",
+        "column": "telefono",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "clients",
+        "column": "piva",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "clients",
+        "column": "indirizzo",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "clients",
+        "column": "vat",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "clients",
+        "column": "address",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "clients",
+        "column": "notes",
+        "type": "text",
         "nullable": true
       },
       {
