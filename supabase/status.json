@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-01T20:28:27.406Z",
+  "generated_at": "2025-10-01T20:42:10.572Z",
   "db": {
     "tables": [
       {
@@ -33,6 +33,10 @@
       {
         "name": "profiles",
         "columns": 6
+      },
+      {
+        "name": "quotes",
+        "columns": 13
       },
       {
         "name": "subscriptions",
@@ -334,6 +338,84 @@
         "table": "profiles",
         "column": "updated_at",
         "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "quotes",
+        "column": "id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "table": "quotes",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "quotes",
+        "column": "client_id",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "table": "quotes",
+        "column": "cliente",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "quotes",
+        "column": "numero",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "quotes",
+        "column": "data",
+        "type": "date",
+        "nullable": true
+      },
+      {
+        "table": "quotes",
+        "column": "importo",
+        "type": "numeric",
+        "nullable": true
+      },
+      {
+        "table": "quotes",
+        "column": "stato",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "quotes",
+        "column": "valuta",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "quotes",
+        "column": "voci",
+        "type": "jsonb",
+        "nullable": true
+      },
+      {
+        "table": "quotes",
+        "column": "note",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "quotes",
+        "column": "sconto_perc",
+        "type": "numeric",
+        "nullable": true
+      },
+      {
+        "table": "quotes",
+        "column": "iva_perc",
+        "type": "numeric",
         "nullable": true
       },
       {
@@ -651,6 +733,12 @@
         "cmd": "SELECT"
       },
       {
+        "table": "clients",
+        "policy": "org_scope",
+        "roles": "{public}",
+        "cmd": "ALL"
+      },
+      {
         "table": "drivers",
         "policy": "drivers: by org",
         "roles": "{authenticated}",
@@ -735,6 +823,12 @@
         "cmd": "SELECT"
       },
       {
+        "table": "quotes",
+        "policy": "org_scope",
+        "roles": "{public}",
+        "cmd": "ALL"
+      },
+      {
         "table": "subscriptions",
         "policy": "read own subs",
         "roles": "{public}",
@@ -763,6 +857,12 @@
         "policy": "update_own_subscription",
         "roles": "{authenticated}",
         "cmd": "UPDATE"
+      },
+      {
+        "table": "transports",
+        "policy": "org_scope",
+        "roles": "{public}",
+        "cmd": "ALL"
       },
       {
         "table": "transports",
