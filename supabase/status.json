@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-05T21:48:53.058Z",
+  "generated_at": "2025-10-05T21:59:11.467Z",
   "db": {
     "tables": [
       {
@@ -52,7 +52,7 @@
       },
       {
         "name": "vehicles",
-        "columns": 7
+        "columns": 17
       },
       {
         "name": "yard_items",
@@ -751,6 +751,66 @@
         "nullable": true
       },
       {
+        "table": "vehicles",
+        "column": "targa",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "vehicles",
+        "column": "modello",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "vehicles",
+        "column": "stato",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "vehicles",
+        "column": "tipo",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "vehicles",
+        "column": "portata",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "vehicles",
+        "column": "autista",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "vehicles",
+        "column": "telaio",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "vehicles",
+        "column": "note",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "vehicles",
+        "column": "scadenze",
+        "type": "jsonb",
+        "nullable": true
+      },
+      {
+        "table": "vehicles",
+        "column": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
         "table": "yard_items",
         "column": "id",
         "type": "bigint",
@@ -1147,6 +1207,30 @@
         "policy": "vehicles: by org",
         "roles": "{authenticated}",
         "cmd": "SELECT"
+      },
+      {
+        "table": "vehicles",
+        "policy": "vehicles_delete",
+        "roles": "{authenticated}",
+        "cmd": "DELETE"
+      },
+      {
+        "table": "vehicles",
+        "policy": "vehicles_insert",
+        "roles": "{authenticated}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "vehicles",
+        "policy": "vehicles_select",
+        "roles": "{authenticated}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "vehicles",
+        "policy": "vehicles_update",
+        "roles": "{authenticated}",
+        "cmd": "UPDATE"
       },
       {
         "table": "yard_items",
