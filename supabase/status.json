@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-05T21:59:11.467Z",
+  "generated_at": "2025-10-05T22:22:40.156Z",
   "db": {
     "tables": [
       {
@@ -37,6 +37,14 @@
       {
         "name": "quotes",
         "columns": 15
+      },
+      {
+        "name": "staff_drivers",
+        "columns": 15
+      },
+      {
+        "name": "staff_vehicles",
+        "columns": 16
       },
       {
         "name": "subscriptions",
@@ -437,6 +445,192 @@
         "column": "updated_at",
         "type": "timestamp with time zone",
         "nullable": true
+      },
+      {
+        "table": "staff_drivers",
+        "column": "id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "table": "staff_drivers",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "staff_drivers",
+        "column": "nome",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "staff_drivers",
+        "column": "telefono",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "staff_drivers",
+        "column": "stato",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "staff_drivers",
+        "column": "assegnatioggi",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "table": "staff_drivers",
+        "column": "note",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "staff_drivers",
+        "column": "patente",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "staff_drivers",
+        "column": "patenti",
+        "type": "ARRAY",
+        "nullable": true
+      },
+      {
+        "table": "staff_drivers",
+        "column": "tags",
+        "type": "ARRAY",
+        "nullable": true
+      },
+      {
+        "table": "staff_drivers",
+        "column": "preferenze",
+        "type": "ARRAY",
+        "nullable": true
+      },
+      {
+        "table": "staff_drivers",
+        "column": "disp",
+        "type": "jsonb",
+        "nullable": true
+      },
+      {
+        "table": "staff_drivers",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
+        "table": "staff_drivers",
+        "column": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
+        "table": "staff_drivers",
+        "column": "assegnati_oggi",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "table": "staff_vehicles",
+        "column": "id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "table": "staff_vehicles",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "staff_vehicles",
+        "column": "targa",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "staff_vehicles",
+        "column": "modello",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "staff_vehicles",
+        "column": "stato",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "staff_vehicles",
+        "column": "tipo",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "staff_vehicles",
+        "column": "portata",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "staff_vehicles",
+        "column": "autista",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "staff_vehicles",
+        "column": "telaio",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "staff_vehicles",
+        "column": "note",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "staff_vehicles",
+        "column": "scad_assicurazione",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "staff_vehicles",
+        "column": "scad_revisione",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "staff_vehicles",
+        "column": "scad_bollo",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "staff_vehicles",
+        "column": "scadenze",
+        "type": "jsonb",
+        "nullable": true
+      },
+      {
+        "table": "staff_vehicles",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
+        "table": "staff_vehicles",
+        "column": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false
       },
       {
         "table": "subscriptions",
@@ -1105,6 +1299,54 @@
         "policy": "quotes_dev_all",
         "roles": "{authenticated}",
         "cmd": "ALL"
+      },
+      {
+        "table": "staff_drivers",
+        "policy": "staff_drivers_delete",
+        "roles": "{authenticated}",
+        "cmd": "DELETE"
+      },
+      {
+        "table": "staff_drivers",
+        "policy": "staff_drivers_insert",
+        "roles": "{authenticated}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "staff_drivers",
+        "policy": "staff_drivers_select",
+        "roles": "{authenticated}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "staff_drivers",
+        "policy": "staff_drivers_update",
+        "roles": "{authenticated}",
+        "cmd": "UPDATE"
+      },
+      {
+        "table": "staff_vehicles",
+        "policy": "staff_vehicles_delete",
+        "roles": "{authenticated}",
+        "cmd": "DELETE"
+      },
+      {
+        "table": "staff_vehicles",
+        "policy": "staff_vehicles_insert",
+        "roles": "{authenticated}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "staff_vehicles",
+        "policy": "staff_vehicles_select",
+        "roles": "{authenticated}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "staff_vehicles",
+        "policy": "staff_vehicles_update",
+        "roles": "{authenticated}",
+        "cmd": "UPDATE"
       },
       {
         "table": "subscriptions",
