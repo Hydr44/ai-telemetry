@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-06T10:19:46.676Z",
+  "generated_at": "2025-10-06T10:39:40.724Z",
   "db": {
     "tables": [
       {
@@ -23,6 +23,14 @@
         "columns": 4
       },
       {
+        "name": "org_settings",
+        "columns": 4
+      },
+      {
+        "name": "org_subscriptions",
+        "columns": 5
+      },
+      {
         "name": "organizations",
         "columns": 4
       },
@@ -33,6 +41,10 @@
       {
         "name": "profiles",
         "columns": 6
+      },
+      {
+        "name": "quote_presets",
+        "columns": 8
       },
       {
         "name": "quotes",
@@ -273,6 +285,60 @@
         "nullable": false
       },
       {
+        "table": "org_settings",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "org_settings",
+        "column": "key",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "org_settings",
+        "column": "value",
+        "type": "jsonb",
+        "nullable": false
+      },
+      {
+        "table": "org_settings",
+        "column": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "org_subscriptions",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "org_subscriptions",
+        "column": "status",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "org_subscriptions",
+        "column": "plan",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "org_subscriptions",
+        "column": "current_period_end",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "org_subscriptions",
+        "column": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
         "table": "organizations",
         "column": "id",
         "type": "uuid",
@@ -352,6 +418,54 @@
       },
       {
         "table": "profiles",
+        "column": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "quote_presets",
+        "column": "id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "table": "quote_presets",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "quote_presets",
+        "column": "description",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "quote_presets",
+        "column": "qty",
+        "type": "numeric",
+        "nullable": false
+      },
+      {
+        "table": "quote_presets",
+        "column": "price",
+        "type": "numeric",
+        "nullable": false
+      },
+      {
+        "table": "quote_presets",
+        "column": "ord",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "table": "quote_presets",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "quote_presets",
         "column": "updated_at",
         "type": "timestamp with time zone",
         "nullable": true
