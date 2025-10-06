@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-06T10:39:40.724Z",
+  "generated_at": "2025-10-06T10:49:35.768Z",
   "db": {
     "tables": [
       {
@@ -1349,6 +1349,36 @@
         "cmd": "UPDATE"
       },
       {
+        "table": "org_settings",
+        "policy": "org_settings_delete",
+        "roles": "{public}",
+        "cmd": "DELETE"
+      },
+      {
+        "table": "org_settings",
+        "policy": "org_settings_insert",
+        "roles": "{public}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "org_settings",
+        "policy": "org_settings_select",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "org_settings",
+        "policy": "org_settings_update",
+        "roles": "{public}",
+        "cmd": "UPDATE"
+      },
+      {
+        "table": "org_subscriptions",
+        "policy": "org_subscriptions_select",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
         "table": "organizations",
         "policy": "organizations_delete_owner",
         "roles": "{authenticated}",
@@ -1395,6 +1425,30 @@
         "policy": "select orgs for members",
         "roles": "{authenticated}",
         "cmd": "SELECT"
+      },
+      {
+        "table": "quote_presets",
+        "policy": "quote_presets_delete",
+        "roles": "{public}",
+        "cmd": "DELETE"
+      },
+      {
+        "table": "quote_presets",
+        "policy": "quote_presets_insert",
+        "roles": "{public}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "quote_presets",
+        "policy": "quote_presets_select",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "quote_presets",
+        "policy": "quote_presets_update",
+        "roles": "{public}",
+        "cmd": "UPDATE"
       },
       {
         "table": "quotes",
@@ -1484,6 +1538,12 @@
         "table": "subscriptions",
         "policy": "subscriptions: me",
         "roles": "{authenticated}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "subscriptions",
+        "policy": "subscriptions_select",
+        "roles": "{public}",
         "cmd": "SELECT"
       },
       {
