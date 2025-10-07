@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-07T13:42:41.277Z",
+  "generated_at": "2025-10-07T13:55:16.664Z",
   "db": {
     "tables": [
       {
@@ -1656,6 +1656,12 @@
       },
       {
         "table": "profiles",
+        "policy": "profiles_select_self",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "profiles",
         "policy": "profiles_self_rw",
         "roles": "{public}",
         "cmd": "ALL"
@@ -1950,13 +1956,31 @@
       },
       {
         "table": "users",
+        "policy": "users_insert_service_only",
+        "roles": "{public}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "users",
         "policy": "users_select",
         "roles": "{public}",
         "cmd": "SELECT"
       },
       {
         "table": "users",
+        "policy": "users_select_same_org",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "users",
         "policy": "users_update",
+        "roles": "{public}",
+        "cmd": "UPDATE"
+      },
+      {
+        "table": "users",
+        "policy": "users_update_service_only",
         "roles": "{public}",
         "cmd": "UPDATE"
       },
