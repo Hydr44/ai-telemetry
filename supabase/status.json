@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-06T23:54:51.415Z",
+  "generated_at": "2025-10-07T01:17:49.500Z",
   "db": {
     "tables": [
       {
@@ -40,7 +40,7 @@
       },
       {
         "name": "profiles",
-        "columns": 6
+        "columns": 8
       },
       {
         "name": "quote_presets",
@@ -68,7 +68,7 @@
       },
       {
         "name": "users",
-        "columns": 9
+        "columns": 10
       },
       {
         "name": "vehicles",
@@ -420,6 +420,18 @@
         "table": "profiles",
         "column": "updated_at",
         "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "profiles",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "profiles",
+        "column": "full_name",
+        "type": "text",
         "nullable": true
       },
       {
@@ -963,6 +975,174 @@
         "nullable": true
       },
       {
+        "table": "transports_with_driver",
+        "column": "id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "client_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "vehicle_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "driver_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "status",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "pickup_address",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "dropoff_address",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "eta_minutes",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "price_cents",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "notes",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "created_by",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "autista",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "cliente",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "via",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "citta",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "cap",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "provincia",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "indirizzo",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "stato",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "orario",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "mezzo",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "note",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "lat",
+        "type": "double precision",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "lng",
+        "type": "double precision",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "transports_with_driver",
+        "column": "driver_name",
+        "type": "text",
+        "nullable": true
+      },
+      {
         "table": "users",
         "column": "id",
         "type": "bigint",
@@ -1015,6 +1195,12 @@
         "column": "updated_at",
         "type": "timestamp with time zone",
         "nullable": false
+      },
+      {
+        "table": "users",
+        "column": "auth_user_id",
+        "type": "uuid",
+        "nullable": true
       },
       {
         "table": "vehicles",
@@ -1427,6 +1613,36 @@
         "cmd": "SELECT"
       },
       {
+        "table": "profiles",
+        "policy": "admin can update profiles org_id",
+        "roles": "{authenticated}",
+        "cmd": "UPDATE"
+      },
+      {
+        "table": "profiles",
+        "policy": "admin can upsert profiles org_id",
+        "roles": "{authenticated}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "profiles",
+        "policy": "profiles_select_mine",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "profiles",
+        "policy": "read own profile",
+        "roles": "{authenticated}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "profiles",
+        "policy": "update own profile",
+        "roles": "{authenticated}",
+        "cmd": "UPDATE"
+      },
+      {
         "table": "quote_presets",
         "policy": "quote_presets_delete",
         "roles": "{public}",
@@ -1554,15 +1770,33 @@
       },
       {
         "table": "transports",
+        "policy": "insert transports",
+        "roles": "{authenticated}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "transports",
         "policy": "org_scope",
         "roles": "{public}",
         "cmd": "ALL"
       },
       {
         "table": "transports",
+        "policy": "read transports same org",
+        "roles": "{authenticated}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "transports",
         "policy": "transports_all",
         "roles": "{authenticated}",
         "cmd": "ALL"
+      },
+      {
+        "table": "transports",
+        "policy": "transports_claim_update",
+        "roles": "{public}",
+        "cmd": "UPDATE"
       },
       {
         "table": "transports",
@@ -1590,8 +1824,20 @@
       },
       {
         "table": "transports",
+        "policy": "transports_select_by_org",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "transports",
         "policy": "transports_update",
         "roles": "{public}",
+        "cmd": "UPDATE"
+      },
+      {
+        "table": "transports",
+        "policy": "update transports same org",
+        "roles": "{authenticated}",
         "cmd": "UPDATE"
       },
       {
