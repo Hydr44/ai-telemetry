@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-07T12:44:08.836Z",
+  "generated_at": "2025-10-07T13:19:44.836Z",
   "db": {
     "tables": [
       {
@@ -1536,6 +1536,18 @@
       },
       {
         "table": "org_settings",
+        "policy": "org_settings_admin_select",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "org_settings",
+        "policy": "org_settings_admin_write",
+        "roles": "{public}",
+        "cmd": "ALL"
+      },
+      {
+        "table": "org_settings",
         "policy": "org_settings_delete",
         "roles": "{public}",
         "cmd": "DELETE"
@@ -1589,6 +1601,12 @@
         "cmd": "UPDATE"
       },
       {
+        "table": "organizations",
+        "policy": "orgs_select",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
         "table": "orgs",
         "policy": "insert orgs",
         "roles": "{authenticated}",
@@ -1626,9 +1644,21 @@
       },
       {
         "table": "profiles",
+        "policy": "profiles_admin_read",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "profiles",
         "policy": "profiles_select_mine",
         "roles": "{public}",
         "cmd": "SELECT"
+      },
+      {
+        "table": "profiles",
+        "policy": "profiles_self_rw",
+        "roles": "{public}",
+        "cmd": "ALL"
       },
       {
         "table": "profiles",
@@ -1641,6 +1671,12 @@
         "policy": "update own profile",
         "roles": "{authenticated}",
         "cmd": "UPDATE"
+      },
+      {
+        "table": "quote_presets",
+        "policy": "qp_admin_all",
+        "roles": "{public}",
+        "cmd": "ALL"
       },
       {
         "table": "quote_presets",
@@ -1788,6 +1824,42 @@
       },
       {
         "table": "transports",
+        "policy": "tr_admin_delete",
+        "roles": "{public}",
+        "cmd": "DELETE"
+      },
+      {
+        "table": "transports",
+        "policy": "tr_admin_insert",
+        "roles": "{public}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "transports",
+        "policy": "tr_admin_update",
+        "roles": "{public}",
+        "cmd": "UPDATE"
+      },
+      {
+        "table": "transports",
+        "policy": "tr_driver_claim",
+        "roles": "{public}",
+        "cmd": "UPDATE"
+      },
+      {
+        "table": "transports",
+        "policy": "tr_driver_update_own",
+        "roles": "{public}",
+        "cmd": "UPDATE"
+      },
+      {
+        "table": "transports",
+        "policy": "tr_select_same_org",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "transports",
         "policy": "transports_all",
         "roles": "{authenticated}",
         "cmd": "ALL"
@@ -1839,6 +1911,30 @@
         "policy": "update transports same org",
         "roles": "{authenticated}",
         "cmd": "UPDATE"
+      },
+      {
+        "table": "users",
+        "policy": "users_admin_delete",
+        "roles": "{public}",
+        "cmd": "DELETE"
+      },
+      {
+        "table": "users",
+        "policy": "users_admin_select",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "users",
+        "policy": "users_admin_update",
+        "roles": "{public}",
+        "cmd": "UPDATE"
+      },
+      {
+        "table": "users",
+        "policy": "users_admin_write",
+        "roles": "{public}",
+        "cmd": "INSERT"
       },
       {
         "table": "users",
