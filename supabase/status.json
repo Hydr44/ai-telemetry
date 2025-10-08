@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-08T16:32:13.150Z",
+  "generated_at": "2025-10-08T16:50:58.911Z",
   "db": {
     "tables": [
       {
@@ -1608,6 +1608,12 @@
         "table": "org_subscriptions",
         "policy": "read for org members",
         "roles": "{authenticated}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "org_subscriptions",
+        "policy": "read org_subs for members",
+        "roles": "{public}",
         "cmd": "SELECT"
       },
       {
