@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-08T17:45:04.433Z",
+  "generated_at": "2025-10-08T17:55:00.275Z",
   "db": {
     "tables": [
       {
@@ -1617,6 +1617,18 @@
         "cmd": "SELECT"
       },
       {
+        "table": "organization_members",
+        "policy": "org_members insert by authed",
+        "roles": "{public}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "organization_members",
+        "policy": "org_members readable by self",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
         "table": "organizations",
         "policy": "organizations_delete_owner",
         "roles": "{authenticated}",
@@ -1638,6 +1650,24 @@
         "table": "organizations",
         "policy": "organizations_update_owner",
         "roles": "{authenticated}",
+        "cmd": "UPDATE"
+      },
+      {
+        "table": "organizations",
+        "policy": "orgs insert by authed",
+        "roles": "{public}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "organizations",
+        "policy": "orgs readable to members",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "organizations",
+        "policy": "orgs update by members",
+        "roles": "{public}",
         "cmd": "UPDATE"
       },
       {
