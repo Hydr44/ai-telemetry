@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-08T15:58:40.330Z",
+  "generated_at": "2025-10-08T16:32:13.150Z",
   "db": {
     "tables": [
       {
@@ -29,6 +29,10 @@
       {
         "name": "org_subscriptions",
         "columns": 5
+      },
+      {
+        "name": "organization_members",
+        "columns": 4
       },
       {
         "name": "organizations",
@@ -335,6 +339,30 @@
       {
         "table": "org_subscriptions",
         "column": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "organization_members",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "organization_members",
+        "column": "user_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "organization_members",
+        "column": "role",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "organization_members",
+        "column": "created_at",
         "type": "timestamp with time zone",
         "nullable": true
       },
@@ -1574,6 +1602,12 @@
         "table": "org_subscriptions",
         "policy": "org_subscriptions_select",
         "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "org_subscriptions",
+        "policy": "read for org members",
+        "roles": "{authenticated}",
         "cmd": "SELECT"
       },
       {
