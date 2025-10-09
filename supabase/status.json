@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-09T12:37:22.609Z",
+  "generated_at": "2025-10-09T13:17:20.178Z",
   "db": {
     "tables": [
       {
@@ -9,6 +9,10 @@
       {
         "name": "clients",
         "columns": 14
+      },
+      {
+        "name": "demolition_cases",
+        "columns": 20
       },
       {
         "name": "drivers",
@@ -197,6 +201,126 @@
         "column": "notes",
         "type": "text",
         "nullable": true
+      },
+      {
+        "table": "demolition_cases",
+        "column": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "demolition_cases",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "demolition_cases",
+        "column": "client_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "demolition_cases",
+        "column": "transport_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "demolition_cases",
+        "column": "targa",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "demolition_cases",
+        "column": "telaio",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "demolition_cases",
+        "column": "marca_modello",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "demolition_cases",
+        "column": "anno",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "table": "demolition_cases",
+        "column": "stato",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "demolition_cases",
+        "column": "pra_check",
+        "type": "jsonb",
+        "nullable": true
+      },
+      {
+        "table": "demolition_cases",
+        "column": "docs",
+        "type": "jsonb",
+        "nullable": true
+      },
+      {
+        "table": "demolition_cases",
+        "column": "invoice_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "demolition_cases",
+        "column": "invoice_total_cents",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "table": "demolition_cases",
+        "column": "invoice_currency",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "demolition_cases",
+        "column": "invoice_number",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "demolition_cases",
+        "column": "invoice_date",
+        "type": "date",
+        "nullable": true
+      },
+      {
+        "table": "demolition_cases",
+        "column": "note",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "demolition_cases",
+        "column": "created_by",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "demolition_cases",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
+        "table": "demolition_cases",
+        "column": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false
       },
       {
         "table": "drivers",
@@ -1525,6 +1649,24 @@
         "policy": "org_scope",
         "roles": "{public}",
         "cmd": "ALL"
+      },
+      {
+        "table": "demolition_cases",
+        "policy": "demolitions insert same org",
+        "roles": "{public}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "demolition_cases",
+        "policy": "demolitions select same org",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "demolition_cases",
+        "policy": "demolitions update same org",
+        "roles": "{public}",
+        "cmd": "UPDATE"
       },
       {
         "table": "drivers",
