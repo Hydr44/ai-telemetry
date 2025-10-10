@@ -1,7 +1,11 @@
 {
-  "generated_at": "2025-10-10T10:54:49.468Z",
+  "generated_at": "2025-10-10T11:15:16.792Z",
   "db": {
     "tables": [
+      {
+        "name": "billing_providers",
+        "columns": 2
+      },
       {
         "name": "categories",
         "columns": 5
@@ -19,8 +23,20 @@
         "columns": 7
       },
       {
+        "name": "invoice_items",
+        "columns": 6
+      },
+      {
+        "name": "invoices",
+        "columns": 18
+      },
+      {
         "name": "memberships",
         "columns": 4
+      },
+      {
+        "name": "org_billing_connections",
+        "columns": 8
       },
       {
         "name": "org_members",
@@ -59,6 +75,10 @@
         "columns": 15
       },
       {
+        "name": "sdi_events",
+        "columns": 6
+      },
+      {
         "name": "staff_drivers",
         "columns": 15
       },
@@ -88,6 +108,18 @@
       }
     ],
     "columns": [
+      {
+        "table": "billing_providers",
+        "column": "id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "billing_providers",
+        "column": "name",
+        "type": "text",
+        "nullable": false
+      },
       {
         "table": "categories",
         "column": "id",
@@ -371,6 +403,150 @@
         "nullable": true
       },
       {
+        "table": "invoice_items",
+        "column": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "invoice_items",
+        "column": "invoice_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "invoice_items",
+        "column": "descr",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "invoice_items",
+        "column": "qty",
+        "type": "numeric",
+        "nullable": false
+      },
+      {
+        "table": "invoice_items",
+        "column": "price",
+        "type": "numeric",
+        "nullable": false
+      },
+      {
+        "table": "invoice_items",
+        "column": "vat_perc",
+        "type": "numeric",
+        "nullable": false
+      },
+      {
+        "table": "invoices",
+        "column": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "invoices",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "invoices",
+        "column": "customer_name",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "invoices",
+        "column": "customer_vat",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "invoices",
+        "column": "customer_tax_code",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "invoices",
+        "column": "customer_address",
+        "type": "jsonb",
+        "nullable": true
+      },
+      {
+        "table": "invoices",
+        "column": "number",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "invoices",
+        "column": "date",
+        "type": "date",
+        "nullable": false
+      },
+      {
+        "table": "invoices",
+        "column": "currency",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "invoices",
+        "column": "total",
+        "type": "numeric",
+        "nullable": true
+      },
+      {
+        "table": "invoices",
+        "column": "provider_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "invoices",
+        "column": "provider_ext_id",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "invoices",
+        "column": "sdi_status",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "invoices",
+        "column": "sdi_protocol",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "invoices",
+        "column": "pdf_url",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "invoices",
+        "column": "xml_url",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "invoices",
+        "column": "meta",
+        "type": "jsonb",
+        "nullable": true
+      },
+      {
+        "table": "invoices",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
         "table": "memberships",
         "column": "user_id",
         "type": "uuid",
@@ -390,6 +566,54 @@
       },
       {
         "table": "memberships",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "org_billing_connections",
+        "column": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "org_billing_connections",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "org_billing_connections",
+        "column": "provider_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "org_billing_connections",
+        "column": "access_token",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "org_billing_connections",
+        "column": "refresh_token",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "org_billing_connections",
+        "column": "token_expires_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
+        "table": "org_billing_connections",
+        "column": "fic_company_id",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "table": "org_billing_connections",
         "column": "created_at",
         "type": "timestamp with time zone",
         "nullable": true
@@ -727,6 +951,42 @@
       {
         "table": "quotes",
         "column": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "sdi_events",
+        "column": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "sdi_events",
+        "column": "invoice_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "sdi_events",
+        "column": "provider_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "sdi_events",
+        "column": "event_type",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "sdi_events",
+        "column": "payload",
+        "type": "jsonb",
+        "nullable": true
+      },
+      {
+        "table": "sdi_events",
+        "column": "created_at",
         "type": "timestamp with time zone",
         "nullable": true
       },
