@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-12T22:47:59.194Z",
+  "generated_at": "2025-10-12T22:57:53.158Z",
   "db": {
     "tables": [
       {
@@ -15,11 +15,23 @@
         "columns": 14
       },
       {
+        "name": "ddt",
+        "columns": 8
+      },
+      {
+        "name": "ddt_items",
+        "columns": 4
+      },
+      {
         "name": "demolition_cases",
         "columns": 21
       },
       {
         "name": "drivers",
+        "columns": 7
+      },
+      {
+        "name": "invoice_due",
         "columns": 7
       },
       {
@@ -61,6 +73,10 @@
       {
         "name": "orgs",
         "columns": 4
+      },
+      {
+        "name": "outbox_emails",
+        "columns": 10
       },
       {
         "name": "profiles",
@@ -235,6 +251,78 @@
         "nullable": true
       },
       {
+        "table": "ddt",
+        "column": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "ddt",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "ddt",
+        "column": "client_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "ddt",
+        "column": "number",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "ddt",
+        "column": "date",
+        "type": "date",
+        "nullable": false
+      },
+      {
+        "table": "ddt",
+        "column": "notes",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "ddt",
+        "column": "meta",
+        "type": "jsonb",
+        "nullable": true
+      },
+      {
+        "table": "ddt",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "ddt_items",
+        "column": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "ddt_items",
+        "column": "ddt_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "ddt_items",
+        "column": "descr",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "ddt_items",
+        "column": "qty",
+        "type": "numeric",
+        "nullable": false
+      },
+      {
         "table": "demolition_cases",
         "column": "id",
         "type": "uuid",
@@ -400,6 +488,48 @@
         "table": "drivers",
         "column": "created_at",
         "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "invoice_due",
+        "column": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "invoice_due",
+        "column": "invoice_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "invoice_due",
+        "column": "due_date",
+        "type": "date",
+        "nullable": false
+      },
+      {
+        "table": "invoice_due",
+        "column": "amount",
+        "type": "numeric",
+        "nullable": false
+      },
+      {
+        "table": "invoice_due",
+        "column": "status",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "invoice_due",
+        "column": "paid_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "invoice_due",
+        "column": "meta",
+        "type": "jsonb",
         "nullable": true
       },
       {
@@ -766,6 +896,66 @@
         "table": "orgs",
         "column": "created_by",
         "type": "uuid",
+        "nullable": true
+      },
+      {
+        "table": "outbox_emails",
+        "column": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "outbox_emails",
+        "column": "org_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "table": "outbox_emails",
+        "column": "to_addr",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "outbox_emails",
+        "column": "subject",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "outbox_emails",
+        "column": "body",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "outbox_emails",
+        "column": "attachments",
+        "type": "jsonb",
+        "nullable": true
+      },
+      {
+        "table": "outbox_emails",
+        "column": "status",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "table": "outbox_emails",
+        "column": "error",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "table": "outbox_emails",
+        "column": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "table": "outbox_emails",
+        "column": "sent_at",
+        "type": "timestamp with time zone",
         "nullable": true
       },
       {
