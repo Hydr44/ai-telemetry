@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-12T11:12:44.693Z",
+  "generated_at": "2025-10-12T11:25:46.637Z",
   "db": {
     "tables": [
       {
@@ -1941,6 +1941,30 @@
         "cmd": "SELECT"
       },
       {
+        "table": "invoice_items",
+        "policy": "invoice_items_rw",
+        "roles": "{public}",
+        "cmd": "ALL"
+      },
+      {
+        "table": "invoices",
+        "policy": "invoices_insert",
+        "roles": "{public}",
+        "cmd": "INSERT"
+      },
+      {
+        "table": "invoices",
+        "policy": "invoices_select",
+        "roles": "{public}",
+        "cmd": "SELECT"
+      },
+      {
+        "table": "invoices",
+        "policy": "invoices_update",
+        "roles": "{public}",
+        "cmd": "UPDATE"
+      },
+      {
         "table": "memberships",
         "policy": "memberships: mine",
         "roles": "{authenticated}",
@@ -2202,6 +2226,12 @@
         "table": "quotes",
         "policy": "quotes_dev_all",
         "roles": "{authenticated}",
+        "cmd": "ALL"
+      },
+      {
+        "table": "sdi_events",
+        "policy": "sdi_events_rw",
+        "roles": "{public}",
         "cmd": "ALL"
       },
       {
