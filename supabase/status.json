@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-12T22:57:53.158Z",
+  "generated_at": "2025-10-12T23:20:01.402Z",
   "db": {
     "tables": [
       {
@@ -2207,6 +2207,12 @@
         "policy": "org_settings_insert",
         "roles": "{public}",
         "cmd": "INSERT"
+      },
+      {
+        "table": "org_settings",
+        "policy": "org_settings_rw",
+        "roles": "{public}",
+        "cmd": "ALL"
       },
       {
         "table": "org_settings",
