@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-14T09:20:26.793Z",
+  "generated_at": "2025-10-14T09:41:45.631Z",
   "source_repo": "Hydr44/ai-telemetry",
   "node": "v20.19.5",
   "package": {
@@ -7,6 +7,7 @@
     "version": "0.1.0",
     "deps": [
       "@heroicons/react",
+      "@sentry/electron",
       "@supabase/auth-ui-react",
       "@supabase/auth-ui-shared",
       "@supabase/ssr",
@@ -41,5 +42,5 @@
       "wait-on"
     ]
   },
-  "lock_hash": "fad06b028ed2b8de"
+  "lock_hash": "30ff563b1e0a68e5"
 }
